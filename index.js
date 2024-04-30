@@ -23,7 +23,7 @@ if (!db) {
 var port = process.env.PORT || 8080;
 app.get('/info', (req, res) => res.send('Hello World!'));
 
-app.listen(port, function(){
+app.listen(port,'0.0.0.0', function(){
     console.log('Running on port ' + port);
 });
 
