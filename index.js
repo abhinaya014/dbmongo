@@ -23,8 +23,8 @@ if (!db) {
 var port = process.env.PORT || 8080;
 app.get('/info', (req, res) => res.send('Hello World!'));
 
-app.listen(port, function(){
-    console.log('Running on port ' + port);
-});
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor corriendo en http://0.0.0.0:${PORT}`);
+  });
 
 app.use('/api', apiRoutes);
