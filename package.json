@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.3.3"
+  },
+  "name": "miproyecto",
+  "description": "Este es mi proyecto en GitHub",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhinaya014/dbmongo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhinaya014/dbmongo/issues"
+  },
+  "homepage": "https://github.com/abhinaya014/dbmongo#readme"
+}
