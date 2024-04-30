@@ -23,9 +23,8 @@ if (!db) {
 var port = process.env.PORT || 8080;
 app.get('/info', (req, res) => res.send('Hello World!'));
 
-app.listen(port,'0.0.0.0', function(){
+app.listen(port,'8080', function(){
     console.log('Running on port ' + port);
 });
 
 app.use('/api', apiRoutes);
-app.use(cors());
