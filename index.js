@@ -15,7 +15,7 @@ app.use(cors({
 app.use(bodyParser.json());
 
 // Conexión a MongoDB
-mongoose.connect('mongodb://localhost/netalmix', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/netalmi', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Eventos de conexión
 var db = mongoose.connection;
@@ -32,7 +32,7 @@ app.get('/info', (req, res) => res.send('Hello World!'));
 
 // Iniciando el servidor en todas las interfaces
 app.listen(port, '0.0.0.0', () => {
-    console.log(`Server running on http://0.0.0.0:${port}`);
+    console.log(`Server running on http://3.222.27.101:${port}`);
 });
 
 // Rutas de la API
