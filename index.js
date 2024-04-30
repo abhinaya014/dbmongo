@@ -28,3 +28,4 @@ app.listen(port,'0.0.0.0', function(){
 });
 
 app.use('/api', apiRoutes);
+app.use(cors());
