@@ -12,7 +12,7 @@ app.use(cors({ origin: ['http://localhost:8080', 'http;//127.0.0.1:8080', 'http:
 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/netakmi', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/netalmi', { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 if (!db) {
     console.log("Error connecting db");
