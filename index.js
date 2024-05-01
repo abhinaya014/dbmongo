@@ -1,4 +1,10 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const apiRoutes = require('./api');
+const cors = require('cors');
+const PORT = process.env.PORT || 8080;
+
+
 const app = express();
 
 // Configuración de CORS con URLs corregidas
@@ -16,10 +22,13 @@ mongoose.connect('mongodb://localhost/netalmi').then(() => {
     console.error("Error connecting to database", err);
 });
 
-const PORT = process.env.PORT || 8080;
 
 app.get('/info', (req, res) => res.send('Hello World!'));
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
+
+// Rutas de la API
+app.use('/api', apiRoutes);
+app.use(cors());
