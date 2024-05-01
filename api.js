@@ -1,11 +1,13 @@
 const express = require('express');
-const router = express.Router();
+const app = express();
 
-router.get('/api', function (req, res) {
-    res.json({
-        status: 'Api trabajando',
-        message: 'Bienvenid@s al mejor WS del mundo'
-    });
+app.get('/', (req, res) => {
+  res.send('Hola NetAlmix!');
+});
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
 
 
