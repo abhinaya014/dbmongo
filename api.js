@@ -1,18 +1,26 @@
 const express = require('express');
-const app = express();
+const router = express.Router();
 
-app.get('/', (req, res) => {
-  res.send('Hola NetAlmix!');
+// GET: Ruta de prueba para verificar que la API está funcionando
+router.get('/info', (req, res) => {
+  res.send('API funcionando correctamente');
 });
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on http://0.0.0.0:${PORT}`);
+// POST: Ruta de prueba para simular la creación de contenido
+router.post('/test', (req, res) => {
+  console.log(req.body);  // Imprimir el cuerpo de la solicitud para depuración
+  res.status(201).json({ message: "Datos recibidos", yourData: req.body });
 });
 
-
-router.get('/info',(req, res)=>{
-    res.send('Hello World!');
+// GET: Ruta de prueba para obtener datos simulados
+router.get('/test', (req, res) => {
+  res.json({
+    message: "Datos de prueba",
+    content: [
+      { id: 1, name: "Contenido 1" },
+      { id: 2, name: "Contenido 2" }
+    ]
+  });
 });
 
 module.exports = router;
