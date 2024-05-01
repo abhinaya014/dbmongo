@@ -8,7 +8,7 @@ let app = express();
 
 // Configuración de CORS con URLs corregidas
 app.use(cors({
-    origin: ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://3.222.27.101:8080', 'http://3.222.27.101']
+    origin: ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://3.222.27.101:8080','3.222.27.101:8080','3.222.27.101', 'http://3.222.27.101']
 }));
 
 app.use(bodyParser.json());
