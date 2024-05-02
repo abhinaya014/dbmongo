@@ -34,3 +34,13 @@ exports.actualizarContenido = async (req, res) => {
 };
 
 
+exports.obtenerTodasLasSeries = async (req, res) => {
+  try {
+    const series = await Contenido.find({ tipoContenido: 'serie' });
+    res.json(series);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
