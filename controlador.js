@@ -52,5 +52,15 @@ exports.obtenerTodasLasPeliculas = async (req, res) => {
   }
 };
 
+exports.obtenerContenidoPorGenero = async (req, res) => {
+  try {
+    const contenidoPorGenero = await Contenido.find({ generos: req.params.genero });
+    res.json(contenidoPorGenero);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
 
 

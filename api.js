@@ -8,6 +8,8 @@ router.delete('/contenidos/:id', controlador.eliminarContenido);
 router.put('/contenidos/:id', controlador.actualizarContenido);
 router.get('/series', controlador.obtenerTodasLasSeries);
 router.get('/peliculas', controlador.obtenerTodasLasPeliculas);
+router.get('/contenidos/genero/:genero', controlador.obtenerContenidoPorGenero);
+
 
 
 
