@@ -8,7 +8,7 @@ let app = express();
 
 // Configuración de CORS para permitir solicitudes desde ciertos orígenes
 app.use(cors({
-    origin: ['http://localhost:8080', 'http://127.0.0.1:8080']
+    origin: ['http://localhost:8080', 'http://127.0.0.1:8080' , 'http://3.222.27.101:8081' , '3.222.27.101:8080']
 }));
 
 // Middleware para parsear cuerpos de solicitud JSON
