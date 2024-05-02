@@ -22,3 +22,15 @@ exports.eliminarContenido = async (req, res) => {
 };
 
 
+
+exports.actualizarContenido = async (req, res) => {
+  try {
+    const contenidoActualizado = await Contenido.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!contenidoActualizado) return res.status(404).send('Contenido no encontrado.');
+    res.json(contenidoActualizado);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
