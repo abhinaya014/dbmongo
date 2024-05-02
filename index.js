@@ -30,5 +30,6 @@ app.listen(PORT, () => {
     console.log(`Servidor ejecutándose en el puerto: ${PORT}`);
 });
 
-// Usar rutas API
-app.use('/api', rutasApi);
+
+app.use('/api', apiRoutes);
+
