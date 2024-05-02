@@ -61,6 +61,15 @@ exports.obtenerContenidoPorGenero = async (req, res) => {
   }
 };
 
+exports.obtenerTopContenidos = async (req, res) => {
+  try {
+    const topContenidos = await Contenido.find().sort({ 'valoraciones.puntuacion': -1 }).limit(10);
+    res.json(topContenidos);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 
 
 
