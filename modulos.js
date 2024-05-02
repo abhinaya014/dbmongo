@@ -2,12 +2,8 @@ const mongoose = require('mongoose');
 
 // Configuración de la conexión a MongoDB
 const connectionString = 'mongodb://localhost/netalmi';
-mongoose.connect(connectionString, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true
-}).then(() => console.log('MongoDB connected successfully'))
+mongoose.connect(connectionString)
+  .then(() => console.log('MongoDB connected successfully'))
   .catch(err => console.error('MongoDB connection error:', err));
 
 // Definición del esquema para los comentarios o reseñas
