@@ -11,25 +11,25 @@ app.use(cors({
     origin: ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://3.222.27.101:8080']
 }));
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/netalmi', { useNewUrlParser: true, useUnifiedTopology: true });
-var db = mongoose.connection;
-if (!db) {
-    console.log("ERROR connecting db");
-} else {
-    console.log("DB connected successfully");
-}
+app.use(bodyParser.apiRoutes.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-var port = process.env.port || 8080;
 
-app.get('/info', (req, res) => res.send('El mejor WS de la historia'));
+mongoose.connect('mongodb://localhost/NetAlmix', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
-app.listen(port, function () {
-    console.log("Running on port: " + port);
-});
 
-app.use('/', apiRoutes);
+  const PORT = process.env.PORT || 8080;
+
+  app.get('/info', (req, res)=>res.send('El módulo de API está funcionando correctamente'));
+
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+
+
+app.use('/api', apiRoutes);
+
