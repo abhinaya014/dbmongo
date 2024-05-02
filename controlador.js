@@ -43,4 +43,15 @@ exports.obtenerTodasLasSeries = async (req, res) => {
   }
 };
 
+exports.obtenerTodasLasPeliculas = async (req, res) => {
+  try {
+    const peliculas = await Contenido.find({ tipoContenido: 'pelicula'});
+    res.json(peliculas);
+  }catch (error) {
+    res.status(500).json({ messege: error.messege});
+  }
+};
+
+
+
 
