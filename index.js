@@ -31,5 +31,5 @@ app.listen(PORT, () => {
   });
 
 
-app.use('/api', apiRoutes);
+app.use('/api', rutasApi);
 
