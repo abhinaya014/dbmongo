@@ -45,13 +45,12 @@ exports.obtenerTodasLasSeries = async (req, res) => {
 
 exports.obtenerTodasLasPeliculas = async (req, res) => {
   try {
-    const peliculas = await Contenido.find({ tipoContenido: 'pelicula'});
+    const peliculas = await Contenido.find({ tipoContenido: 'película' });
     res.json(peliculas);
-  }catch (error) {
-    res.status(500).json({ messege: error.messege});
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
-
 
 
 
