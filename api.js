@@ -1,26 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const {
+  createContent,
+  deleteContent,
+  updateContent,
+  getAllSeries,
+  getAllMovies,
+  getContentsByGenre,
+  getTopContents
+} = require('./controlador'); // Asegúrate de que la ruta es correcta
 
-// GET: Ruta de prueba para verificar que la API está funcionando
-router.get('/info', (req, res) => {
-  res.send('API funcionando correctamente');
-});
-
-// POST: Ruta de prueba para simular la creación de contenido
-router.post('/test', (req, res) => {
-  console.log(req.body);  // Imprimir el cuerpo de la solicitud para depuración
-  res.status(201).json({ message: "Datos recibidos", yourData: req.body });
-});
-
-// GET: Ruta de prueba para obtener datos simulados
-router.get('/test', (req, res) => {
-  res.json({
-    message: "Datos de prueba",
-    content: [
-      { id: 1, name: "Contenido 1" },
-      { id: 2, name: "Contenido 2" }
-    ]
-  });
-});
+router.post('/contents', createContent);
+router.delete('/contents/:id', deleteContent);
+router.put('/contents/:id', updateContent);
+router.get('/series', getAllSeries);
+router.get('/movies', getAllMovies);
+router.get('/contents/genre/:genre', getContentsByGenre);
+router.get('/contents/top', getTopContents);
 
 module.exports = router;

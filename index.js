@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/playalmi', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/netalmi', { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 if (!db) {
     console.log("ERROR connecting db");

@@ -1,34 +1,49 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-// Schema para las valoraciones
-const valoracionSchema = new Schema({
-  nick: { type: String, required: true },
-  puntuacion: { type: Number, required: true, min: 0, max: 10 },
-  comentario: { type: String, default: '' }
+// Configuración de la conexión a MongoDB
+const connectionString = 'mongodb://localhost/netalmi';
+mongoose.connect(connectionString, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+}).then(() => console.log('MongoDB connected successfully'))
+  .catch(err => console.error('MongoDB connection error:', err));
+
+// Definición del esquema para los comentarios o reseñas
+const reviewSchema = new mongoose.Schema({
+  nick: String,
+  score: Number,
+  comment: String
+}, { _id: false });
+
+// Definición del esquema para los episodios de las series
+const episodeSchema = new mongoose.Schema({
+  title: String,
+  duration: Number,
+  description: String
+}, { _id: false });
+
+// Definición del esquema principal para el contenido (películas y series)
+const contentSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  contentType: { type: String, required: true, enum: ['movie', 'series'] },
+  description: String,
+  reviews: [reviewSchema],
+  genres: [{ type: String }],
+  numPlays: Number,
+  awards: [String],
+  // Campos específicos para películas
+  duration: { type: Number, default: 0 },
+  director: String,
+  // Campos específicos para series
+  episodes: [episodeSchema]
 });
 
-// Schema para los capítulos (solo aplicable a series)
-const capituloSchema = new Schema({
-  titulo: { type: String, required: true },
-  duracion: { type: Number, required: true },  // Duración en minutos
-  descripcion: { type: String, required: true }
-});
+// Creación del modelo a partir del esquema
+const Content = mongoose.model('Content', contentSchema);
 
-// Schema principal para contenido
-const contenidoSchema = new Schema({
-  titulo: { type: String, required: true },
-  tipo: { type: String, required: true, enum: ['serie', 'película'] },
-  descripcion: { type: String, required: true },
-  valoraciones: [valoracionSchema],
-  generos: [{ type: String, required: true }],
-  numero_reproducciones: { type: Number, default: 0 },
-  premios: [{ type: String }],
-  duracion: { type: Number },  // Solo para películas, en minutos
-  director: { type: String },  // Solo para películas
-  capitulos: [capituloSchema]  // Solo para series
-});
-
-const Contenido = mongoose.model('Contenido', contenidoSchema);
-
-module.exports = Contenido;
+// Exportación del modelo y cualquier otra configuración o modelo necesario
+module.exports = {
+  Content
+};
