@@ -8,7 +8,7 @@ let app = express();
 
 // Configuración de CORS para permitir solicitudes desde ciertos orígenes
 app.use(cors({
-    origin: ['http://localhost:8080', 'http://127.0.0.1:8080']
+    origin: ['http://localhost:8080', 'http://127.0.0.1:8080' , 'http://3.222.27.101:8081' , '3.222.27.101:8080']
 }));
 
 // Middleware para parsear cuerpos de solicitud JSON
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Conexión a MongoDB
-mongoose.connect('mongodb://localhost/netalmix', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/NetAlmix', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Conexión a MongoDB exitosa'))
   .catch(err => console.error('Error de conexión a MongoDB:', err));
 
