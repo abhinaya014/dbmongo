@@ -116,3 +116,13 @@ exports.actualizarDocumental = async function(req, res) {
     res.status(500).json({ message: error.message });
   }
 };
+
+
+exports.obtenerTodosLosDocumentales = async function(req, res) {
+  try {
+    const documentales = await Contenido.find({ tipoContenido: 'documental' });
+    res.json(documentales);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
