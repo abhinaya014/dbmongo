@@ -94,13 +94,19 @@ exports.creardocumental =async function(req,res) {
 
 exports.eliminarDocumental = async function(req, res) {
   try {
-    const resultado = await Contenido.findByIdAndDelete({ _id: req.params.id, tipoContenido: 'documental' });
-    if (!resultado) return res.status(404).send('Documental no encontrado.');
-    res.status(204).send();
-  } catch (error) {
+    const resultado = await Contenido.findByIdAndDelete({
+        _id: req.params.id,
+        tipoContenido: 'documental'
+    });
+
+    if (!resultado) {
+        return res.status(404).send('Documental no encontrado.');
+    }
+
+    res.status(200).json({ message: 'Elemento borrado', resultado });
+} catch (error) {
     res.status(500).json({ message: error.message });
-  }
-};
+}
 
 
 exports.actualizarDocumental = async function(req, res) {
