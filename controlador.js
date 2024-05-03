@@ -103,7 +103,7 @@ exports.eliminarDocumental = async function(req, res) {
         return res.status(404).send('Documental no encontrado.');
     }
 
-    res.status(200).json({ message: 'Elemento borrado', resultado });
+    res.status(200).json({ message: 'Elemento borrado' });
 } catch (error) {
     res.status(500).json({ message: error.message });
 }
