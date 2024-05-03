@@ -126,3 +126,19 @@ exports.obtenerTodosLosDocumentales = async function(req, res) {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.obtenerDocumentalPorExperto = async function(req, res) {
+  try {
+    const nombre = req.params.nombre;
+    const apellido = req.params.apellido;
+
+    const documentales = await Contenido.find({
+      tipoContenido : 'documental',
+      'expertos.nombre': nombre,
+      'expertos.apellido': apellido
+    });
+    res.json(documentales);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

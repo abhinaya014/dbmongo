@@ -15,6 +15,8 @@ router.post('/documentales', controlador.creardocumental);
 router.delete('/documentales/:id', controlador.eliminarDocumental);
 router.put('/documentales/:id', controlador.actualizarDocumental);
 router.get('/documentales', controlador.obtenerTodosLosDocumentales);
+router.get('/documentales/experto/:nombre/:apellido', controlador.obtenerDocumentalPorExperto);
+
 
 
 
