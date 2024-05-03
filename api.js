@@ -10,6 +10,7 @@ router.get('/series', controlador.obtenerTodasLasSeries);
 router.get('/peliculas', controlador.obtenerTodasLasPeliculas);
 router.get('/contenidos/genero/:genero', controlador.obtenerContenidoPorGenero);
 router.get('/contenidos/top', controlador.obtenerTopContenidos);
+router.get('/seri', controlador.obtenerTopSeri);
 
 
 

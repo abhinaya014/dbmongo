@@ -65,3 +65,15 @@ exports.obtenerTopContenidos = async function(req, res) {
     res.status (500).json({ message: error.message });
   }
 };
+
+exports.obtenerTopSeri = async function(req, res) {
+  try {
+    const series = await Contenido.find(
+      { tipoContenido: 'serie' },
+      'titulo tipoContenido descripcion episodios.titulo episodios.duracion episodios.descripcion'
+    );
+    res.json(series);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
