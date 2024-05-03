@@ -1,5 +1,11 @@
 const mongoose = require('mongoose');
 
+const esquemaExperto =new mongoose.Schema({
+  nombre: { type: String, required: true },
+  apellido: { type: String, required: true },
+  cargo: { type: String, required: true },
+});
+
 const esquemaResena = new mongoose.Schema({
   nick: { type: String, required: true },
   puntuacion: { type: Number, required: true },
@@ -12,6 +18,7 @@ const esquemaEpisodio = new mongoose.Schema({
   descripcion: String
 });
 
+
 const esquemaContenido = new mongoose.Schema({
   titulo: { type: String, required: true },
   tipoContenido: { type: String, enum: ['película', 'serie'], required: true },
@@ -22,7 +29,9 @@ const esquemaContenido = new mongoose.Schema({
   premios: [{ type: String }],
   duracion: { type: Number },
   director: { type: String }, 
-  episodios: [esquemaEpisodio] 
+  episodios: [esquemaEpisodio],
+  expertos: [esquemaExperto]
+
 });
 
 const Contenido = mongoose.model('Contenido', esquemaContenido);
