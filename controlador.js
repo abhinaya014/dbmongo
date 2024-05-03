@@ -15,6 +15,8 @@ exports.eliminarContenido = async function(req, res) {
     const resultado = await Contenido.findByIdAndDelete(req.params.id);
     if (!resultado) return res.status(404).send('Contenido no encontrado.');
     res.status(204).send();
+    res.status(200).json({ message: 'Elemento borrado' });
+
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
