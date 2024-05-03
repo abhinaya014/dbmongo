@@ -12,18 +12,15 @@ exports.crearContenido = async (req, res) => {
 
 
 exports.eliminarContenido = async (req, res) => {
-    try {
-      const resulta = await Contenido.findByIdAndDelete(req.params.id);
-      if (!resulta) {
-        return res.status(404).send('Contenido no encontrado.');
-      }
-  
-      res.status(200).json({ message: 'Contenido borrado exitosamente' });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  };
-  
+  try {
+    const resultado = await Contenido.findByIdAndDelete(req.params.id);
+    if (!resultado) return res.status(404).send('Contenido no encontrado.');
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 
 
 exports.actualizarContenido = async (req, res) => {
