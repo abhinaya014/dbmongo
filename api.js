@@ -12,6 +12,10 @@ router.get('/contenidos/genero/:genero', controlador.obtenerContenidoPorGenero);
 router.get('/contenidos/top', controlador.obtenerTopContenidos);
 //router.get('/seri', controlador.obtenerTopSeri);
 router.post('/documentales', controlador.creardocumental);
+router.delete('/documentales/:id', controlador.eliminarDocumental);
+router.put('/documentales/:id', controlador.actualizarDocumental);
+
+
 
 
 
