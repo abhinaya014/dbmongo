@@ -71,5 +71,80 @@ exports.obtenerTopContenidos = async (req, res) => {
 };
 
 
+exports.crearDocumental = async function(req, res) {
+  const nuevoDocumental = new Contenido({
+    ...req.body,
+    tipoContenido: 'documental'
+  });
+  try {
+    await nuevoDocumental.save();
+    res.status(201).json(nuevoDocumental);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+
+
+exports.actualizarDocumental = async function(req, res) {
+  try {
+    const contenidoActualizado = await Contenido.findByIdAndUpdate(
+      { _id: req.params.id, tipoContenido: 'documental' },
+      req.body,
+      { new: true }
+    );
+    if (!contenidoActualizado) return res.status(404).send('Documental no encontrado.');
+    res.json(contenidoActualizado);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+exports.obtenerTodosLosDocumentales = async function(req, res) {
+  try {
+    const documentales = await Contenido.find({ tipoContenido: 'documental' });
+    res.json(documentales);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+exports.obtenerDocumentalesPorExperto = async function(req, res) {
+  try {
+    const nombre = req.params.nombre;
+    const apellido = req.params.apellido;
+
+    const documentales = await Contenido.find({
+      tipoContenido: 'documental',
+      'expertos.nombre': nombre,
+      'expertos.apellido': apellido
+    });
+    res.json(documentales);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+exports.eliminarDocumental = async function(req, res) {
+  try {
+      const resultado = await Contenido.findByIdAndDelete({
+          _id: req.params.id,
+          tipoContenido: 'documental'
+      });
+
+      if (!resultado) {
+          return res.status(404).send('Documental no encontrado.');
+      }
+
+      res.status(200).json({ message: 'Elemento borrado', resultado });
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+};
+
+
 
 
