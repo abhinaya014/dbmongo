@@ -107,6 +107,7 @@ exports.eliminarDocumental = async function(req, res) {
 } catch (error) {
     res.status(500).json({ message: error.message });
 }
+};
 
 
 exports.actualizarDocumental = async function(req, res) {
