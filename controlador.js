@@ -71,7 +71,7 @@ exports.obtenerTopContenidos = async (req, res) => {
 };
 
 
-exports.crearDocumental = async function(req, res) {
+exports.creardocumental = async function(req, res) {
   const nuevoDocumental = new Contenido({
     ...req.body,
     tipoContenido: 'documental'
