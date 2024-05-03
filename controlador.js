@@ -13,8 +13,8 @@ exports.crearContenido = async (req, res) => {
 
 exports.eliminarContenido = async (req, res) => {
     try {
-      const resultado = await Contenido.findByIdAndDelete(req.params.id);
-      if (!resultado) {
+      const resulta = await Contenido.findByIdAndDelete(req.params.id);
+      if (!resulta) {
         return res.status(404).send('Contenido no encontrado.');
       }
   
