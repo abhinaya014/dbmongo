@@ -77,3 +77,16 @@ exports.obtenerTopSeri = async function(req, res) {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.creardocumental =async function(req,res) {
+  const nuevoDocumental = new Contenido({
+    ...req.body,
+    tipoContenido: 'documental'
+  });
+  try {
+    await nuevoDocumental.save();
+    res.status(201).json(nuevoDocumental);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  } 
+};
