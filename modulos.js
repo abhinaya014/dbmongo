@@ -20,9 +20,9 @@ const esquemaContenido = new mongoose.Schema({
   generos: [{ type: String }],
   numeroReproducciones: Number,
   premios: [{ type: String }],
-  duracion: { type: Number }, // Solo para películas
-  director: { type: String }, // Solo para películas
-  episodios: [esquemaEpisodio] // Solo para series
+  duracion: { type: Number },
+  director: { type: String }, 
+  episodios: [esquemaEpisodio] 
 });
 
 const Contenido = mongoose.model('Contenido', esquemaContenido);
