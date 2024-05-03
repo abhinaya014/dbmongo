@@ -21,7 +21,7 @@ const esquemaEpisodio = new mongoose.Schema({
 
 const esquemaContenido = new mongoose.Schema({
   titulo: { type: String, required: true },
-  tipoContenido: { type: String, enum: ['película', 'serie'], required: true },
+  tipoContenido: { type: String, enum: ['película', 'serie', 'documental'], required: true },
   descripcion: String,
   valoraciones: [esquemaResena],
   generos: [{ type: String }],
