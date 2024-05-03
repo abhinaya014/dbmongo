@@ -111,7 +111,7 @@ exports.obtenerTodosLosDocumentales = async function(req, res) {
 };
 
 
-exports.obtenerDocumentalesPorExperto = async function(req, res) {
+exports.obtenerDocumentalPorExperto = async function(req, res) {
   try {
     const nombre = req.params.nombre;
     const apellido = req.params.apellido;
