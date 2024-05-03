@@ -20,7 +20,7 @@ mongoose.connect('mongodb://localhost/NetAlmix', { useNewUrlParser: true, useUni
   .then(() => console.log('Conexión a MongoDB exitosa'))
   .catch(err => console.error('Error de conexión a MongoDB:', err));
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
 // Ruta de información básica
 app.get('/info', (req, res) => res.send('El mejor servicio web de la historia'));
