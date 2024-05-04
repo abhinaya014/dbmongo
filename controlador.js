@@ -74,6 +74,16 @@ exports.obtenerTopContenidos = async (req, res) => {
 };
 
 
+exports.obtenerTodocontenido = async (req, res) => {
+  try {
+    const contenido = await contenido.find();
+    res.json(contenido);
+  }catch {
+    res.status(500).json({ message: "Error al obtener contenidos" + error.message})
+  }
+};
+
+
 exports.creardocumental = async function(req, res) {
   const nuevoDocumental = new Contenido({
     ...req.body,
