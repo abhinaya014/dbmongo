@@ -53,9 +53,13 @@ exports.obtenerTodasLasPeliculas = async function(req, res) {
 exports.obtenerContenidoPorGenero = async function(req, res) {
   try {
     const contenidoPorGenero = await Contenido.find({ generos: req.params.genero });
-    res.json(contenidoPorGenero);
+    if (contenidoPorGenero.length === 0) {
+      res.status(404).json({message: 'No Se Encuentra Contenido Con Ese Genero'})
+    } else {
+      res.json(contenidoPorGenero);
+    }
   } catch (error) {
-    res.status(500).json({ 'dNo Existe': error.message });
+    res.status(500).json({ message:"Error al buscar el contenido por genero" + error.message });
   }
 };
 
