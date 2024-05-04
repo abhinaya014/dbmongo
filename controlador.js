@@ -37,7 +37,7 @@ exports.obtenerTodasLasSeries = async function(req, res) {
     const series = await Contenido.find({ tipoContenido: 'serie' });
     res.json(series);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 'Serie No Encontradod': error.message });
   }
 };
 
