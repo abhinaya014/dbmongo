@@ -10,7 +10,7 @@ router.get('/series', controlador.obtenerTodasLasSeries);
 router.get('/peliculas', controlador.obtenerTodasLasPeliculas);
 router.get('/contenidos/genero/:genero', controlador.obtenerContenidoPorGenero);
 router.get('/contenidos/top', controlador.obtenerTopContenidos);
-router.get('/todo-contenido', controlador.obtenerTodoContenido); 
+router.get('/todo-contenido', controlador.obtenerTodocontenido); 
 
 //router.get('/seri', controlador.obtenerTopSeri);
 router.post('/documentales', controlador.creardocumental);
