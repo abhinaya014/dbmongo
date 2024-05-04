@@ -55,7 +55,7 @@ exports.obtenerContenidoPorGenero = async function(req, res) {
     const contenidoPorGenero = await Contenido.find({ generos: req.params.genero });
     res.json(contenidoPorGenero);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 'dNo Existe': error.message });
   }
 };
 
